@@ -1,0 +1,128 @@
+X1	X2	rna_seq
+E017	IMR90	NA
+E002	ESC	NA
+E008	ESC	NA
+E001	ESC	NA
+E015	ESC	NA
+E014	ESC	NA
+E016	ESC	yes
+E003	ESC	yes
+E024	ESC	yes
+E020	iPSC	NA
+E019	iPSC	NA
+E018	iPSC	NA
+E021	iPSC	NA
+E022	iPSC	NA
+E007	ES-deriv	yes
+E009	ES-deriv	NA
+E010	ES-deriv	NA
+E013	ES-deriv	yes
+E012	ES-deriv	yes
+E011	ES-deriv	yes
+E004	ES-deriv	yes
+E005	ES-deriv	yes
+E006	ES-deriv	yes
+E062	Blood & T-cell	yes
+E034	Blood & T-cell	NA
+E045	Blood & T-cell	NA
+E033	Blood & T-cell	NA
+E044	Blood & T-cell	NA
+E043	Blood & T-cell	NA
+E039	Blood & T-cell	NA
+E041	Blood & T-cell	NA
+E042	Blood & T-cell	NA
+E040	Blood & T-cell	NA
+E037	Blood & T-cell	yes
+E048	Blood & T-cell	NA
+E038	Blood & T-cell	yes
+E047	Blood & T-cell	yes
+E029	HSC & B-cell	NA
+E031	HSC & B-cell	NA
+E035	HSC & B-cell	NA
+E051	HSC & B-cell	NA
+E050	HSC & B-cell	yes
+E036	HSC & B-cell	NA
+E032	HSC & B-cell	NA
+E046	HSC & B-cell	NA
+E030	HSC & B-cell	NA
+E026	Mesench	NA
+E049	Mesench	NA
+E025	Mesench	NA
+E023	Mesench	NA
+E052	Myosat	NA
+E055	Epithelial	yes
+E056	Epithelial	yes
+E059	Epithelial	yes
+E061	Epithelial	yes
+E057	Epithelial	yes
+E058	Epithelial	yes
+E028	Epithelial	yes
+E027	Epithelial	yes
+E054	Neurosph	yes
+E053	Neurosph	yes
+E112	Thymus	yes
+E093	Thymus	NA
+E071	Brain	yes
+E074	Brain	NA
+E068	Brain	NA
+E069	Brain	NA
+E072	Brain	NA
+E067	Brain	NA
+E073	Brain	NA
+E070	Brain	yes
+E082	Brain	yes
+E081	Brain	NA
+E063	Adipose	NA
+E100	Muscle	yes
+E108	Muscle	NA
+E107	Muscle	NA
+E089	Muscle	NA
+E090	Muscle	NA
+E083	Heart	NA
+E104	Heart	yes
+E095	Heart	yes
+E105	Heart	yes
+E065	Heart	yes
+E078	Sm. Muscle	NA
+E076	Sm. Muscle	NA
+E103	Sm. Muscle	NA
+E111	Sm. Muscle	NA
+E092	Digestive	NA
+E085	Digestive	yes
+E084	Digestive	yes
+E109	Digestive	yes
+E106	Digestive	yes
+E075	Digestive	NA
+E101	Digestive	NA
+E102	Digestive	NA
+E110	Digestive	NA
+E077	Digestive	NA
+E079	Digestive	yes
+E094	Digestive	yes
+E099	Other	NA
+E086	Other	NA
+E088	Other	NA
+E097	Other	yes
+E087	Other	yes
+E080	Other	NA
+E091	Other	NA
+E066	Other	yes
+E098	Other	yes
+E096	Other	yes
+E113	Other	yes
+E114	ENCODE2012	yes
+E115	ENCODE2012	NA
+E116	ENCODE2012	yes
+E117	ENCODE2012	yes
+E118	ENCODE2012	yes
+E119	ENCODE2012	yes
+E120	ENCODE2012	yes
+E121	ENCODE2012	NA
+E122	ENCODE2012	yes
+E123	ENCODE2012	yes
+E124	ENCODE2012	NA
+E125	ENCODE2012	NA
+E126	ENCODE2012	NA
+E127	ENCODE2012	yes
+E128	ENCODE2012	yes
+E129	ENCODE2012	NA
