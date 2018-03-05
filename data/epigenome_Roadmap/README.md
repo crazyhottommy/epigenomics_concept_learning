@@ -21,3 +21,44 @@ gene expression analysis with `DESeq2`.
 wget http://egg2.wustl.edu/roadmap/data/byDataType/rna/expression/57epigenomes.RPKM.pc.gz
 wget http://egg2.wustl.edu/roadmap/data/byDataType/rna/expression/57epigenomes.N.pc.gz
 ```
+
+### download chromHMM state data
+
+```bash
+cat sample_ids.txt | while read -r id
+do
+  wget -r --no-parent -nH --cut-dir=8 -A ${id}*segments.bed http://egg2.wustl.edu/roadmap/data/byFileType/chromhmmSegmentations/ChmmModels/coreMarks/jointModel/final/
+done
+
+```
+
+### first run testing data
+
+I choose the ones with both chromHMM data and rna seq data.
+
+```
+id    tissue    has_rnaseq
+E055	Epithelial	yes
+E056	Epithelial	yes
+E059	Epithelial	yes
+E061	Epithelial	yes
+E057	Epithelial	yes
+E058	Epithelial	yes
+E028	Epithelial	yes
+E027	Epithelial	yes
+E054	Neurosph	yes
+E053	Neurosph	yes
+E092	Digestive	no
+E085	Digestive	yes
+E084	Digestive	yes
+E109	Digestive	yes
+E106	Digestive	yes
+E075	Digestive	no
+E101	Digestive	no
+E102	Digestive	no
+E110	Digestive	no
+E077	Digestive	no
+E079	Digestive	yes
+E094	Digestive	yes
+
+```
