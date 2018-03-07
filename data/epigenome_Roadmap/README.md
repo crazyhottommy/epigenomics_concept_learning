@@ -152,3 +152,9 @@ zless -S  gen10.long.gtf.gz | awk '$3 == "gene"' > gencode_10_genes.gtf
 bgzip gencode_10_genes.gtf
 ```
 `genecode_10_genes.gtf.gz` is in the annotation folder.
+
+simplify that file further:
+
+```bash
+zless -S gencode_10_genes.gtf.gz | cut -f1,5 -d ";" | sed 's/gene_id //' | sed 's/"//g' | sed 's/gene_name //' | sed 's/; /\t/' | sed -E 's/\.[0-9]+//' | cut -f1,4,5,7,9,10 > genecode_10_simplified.tsv
+```
