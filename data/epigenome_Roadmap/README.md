@@ -82,7 +82,7 @@ make_df<- function(gr){
 
 chromHMM_dfs<- map(chromHMM_tiles, make_df)
 
-walk2(chromHMM_dfs, names(chromHMM_dfs), function(x,y) write_tsv(x, paste0(y, "_segments.bed"), col_names =F))
+walk2(chromHMM_dfs, names(chromHMM_dfs), function(x,y) write.table(x, paste0(y, "_segments.bed"), col.names =F, sep = "\t", quote =F))
 ```
 
 
