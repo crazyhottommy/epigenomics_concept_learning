@@ -53,6 +53,9 @@ chr10	125600	125800	E12
 ```
 
 chr10 from 0 to 110000 are of state E15. I will tile the bins back to 200bp.
+one can probably write some python script to do the same, but the `tile` function
+in `GenomicRanges` can handle the edge cases when the length of the whole chromosome
+is not `n * 200`, which is almost always the case.
 
 ```r
 library(GenomicRanges)
@@ -82,10 +85,25 @@ make_df<- function(gr){
 
 chromHMM_dfs<- map(chromHMM_tiles, make_df)
 
-walk2(chromHMM_dfs, names(chromHMM_dfs), function(x,y) write.table(x, paste0(y, "_segments.bed"), col.names =F, sep = "\t", quote =F))
+walk2(chromHMM_dfs, names(chromHMM_dfs), function(x,y) write.table(x, paste0(y, "_segments.bed"), row.names =F, col.names =F, sep = "\t", quote =F))
 ```
 
+Now, it is 200 bp per bin.
 
+```bash
+head E027_segments.bed
+chr10	0	200	E15
+chr10	200	400	E15
+chr10	400	600	E15
+chr10	600	800	E15
+chr10	800	1000	E15
+chr10	1000	1200	E15
+chr10	1200	1400	E15
+chr10	1400	1600	E15
+chr10	1600	1800	E15
+chr10	1800	2000	E15
+
+```
 
 ### first run testing data
 
@@ -123,3 +141,14 @@ only the samples listed above.
 
 
 ### gene annotation file
+
+```bash
+# this one is used for RNAseq quantification
+
+wget http://egg2.wustl.edu/roadmap/data/byDataType/rna/annotations/gen10.long.gtf.gz
+
+## extract only the gene information.
+zless -S  gen10.long.gtf.gz | awk '$3 == "gene"' > gencode_10_genes.gtf
+bgzip gencode_10_genes.gtf
+```
+`genecode_10_genes.gtf.gz` is in the annotation folder.
