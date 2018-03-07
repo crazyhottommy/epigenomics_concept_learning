@@ -25,12 +25,67 @@ wget http://egg2.wustl.edu/roadmap/data/byDataType/rna/expression/57epigenomes.N
 ### download chromHMM state data
 
 ```bash
+# on our shark HPC:
+cd /rsrch2/genomic_med/krai/epigenome_roadmap/concept_learning_chromHMM_segs
 cat sample_ids.txt | while read -r id
 do
   wget -r --no-parent -nH --cut-dir=8 -A ${id}*segments.bed http://egg2.wustl.edu/roadmap/data/byFileType/chromhmmSegmentations/ChmmModels/coreMarks/jointModel/final/
 done
 
 ```
+
+chromHMM was called in 15 state model with 200 bp bin. If consecutive bins are of the same state, it will be combined.
+
+```bash
+cd /rsrch2/genomic_med/krai/epigenome_roadmap/concept_learning_chromHMM_segs
+head E027_15_coreMarks_segments.bed
+chr10	0	110000	E15
+chr10	110000	110400	E1
+chr10	110400	119600	E15
+chr10	119600	120200	E1
+chr10	120200	120400	E7
+chr10	120400	122000	E5
+chr10	122000	122800	E1
+chr10	122800	125000	E5
+chr10	125000	125600	E7
+chr10	125600	125800	E12
+
+```
+
+chr10 from 0 to 110000 are of state E15. I will tile the bins back to 200bp.
+
+```r
+library(GenomicRanges)
+library(rtracklayer)
+library(purrr)
+library(tidyverse)
+segs<- list.files(".", pattern = "segments.bed")
+
+segs<- set_names(segs, gsub("_15_coreMarks_segments.bed", "", segs))
+chromHMM_segs<- purrr::map(segs, import, format = "BED")
+
+tile_chromHMM<- function(chromHMM_seg){
+  chromHMM_seg_tile<- tile(chromHMM_seg, width = 200)
+  names(chromHMM_seg_tile)<- chromHMM_seg$name
+  stack(chromHMM_seg_tile, "state")
+}
+
+# this can take a while..
+chromHMM_tiles<- map(chromHMM_segs, tile_chromHMM)
+
+## write back to file as a bed file. bed file is 0 based, in R, everything is 1 based.
+## start(gr) -1
+
+make_df<- function(gr){
+  data.frame(chr = seqnames(gr), start = start(gr) - 1, end = end(gr), state = gr$state)
+}
+
+chromHMM_dfs<- map(chromHMM_tiles, make_df)
+
+walk2(chromHMM_dfs, names(chromHMM_dfs), function(x,y) write_tsv(x, paste0(y, "_segments.bed"), col_names =F))
+```
+
+
 
 ### first run testing data
 
@@ -62,3 +117,9 @@ E079	Digestive	yes
 E094	Digestive	yes
 
 ```
+
+`test_run_rnaseq.tsv` in the `rnaseq` folder contains a subset of `57epigenomes.RPKM.pc` with
+only the samples listed above.
+
+
+### gene annotation file
