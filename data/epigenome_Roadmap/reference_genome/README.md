@@ -8,4 +8,4 @@ the whole genome fasta file was gotten by:
 rsync -avzP rsync://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/ .
 ```
 
-The fist base is postion 0.
+The first base is postion 0 for each chromosome.
